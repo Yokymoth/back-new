@@ -13,12 +13,14 @@ exports.signup = (req, res) => {
     userEmail: req.body.userEmail,
     userPassword: bcrypt.hashSync(req.body.userPassword, 8),
   })
-    .then(() => {
+    .then((user) => {
+      collectionServices.insertCollectionForUser(user.userID);
       res.send({ message: "User was registered successfully!" });
     })
     .catch((err) => {
       res.status(500).send({ message: err.message });
     });
+
 };
 
 exports.signin = (req, res) => {

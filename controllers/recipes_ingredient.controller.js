@@ -115,16 +115,15 @@ exports.deleteByRecipeID = (req, res) => {
 };
 
 exports.deleteByRecipeIngreID = (req, res) => {
-  console.log(req.body);
+  console.log("Body",req.body);
   for (i = 0; i < req.body.length; i++) {
     const re_IngredientsID = req.body[i].re_IngredientsID;
-    
     RecipeIngre.destroy({
       where: { re_IngredientsID: req.body[i].re_IngredientsID },
     }).then(() => {
       console.log("deleted successfully");
       res.status(200).json({
-        message: "deleteByRecipeIngreID deleted successfully with id = " + re_IngredientsID
+        message: "RecipeIngre deleted successfully with id = " + re_IngredientsID
       });
     })
     .catch((err) => {

@@ -1,6 +1,7 @@
 const db = require("../models/index");
 const Recipe = db.recipe;
-const sequelize = require('sequelize');
+const User = db.user;
+
 
 // Post a recipe
 exports.createRecipe = (req, res) => {
@@ -42,12 +43,14 @@ exports.editRecipe = (req, res) => {
 };
  
 exports.findAll = (req, res) => {
-  Recipe.findAll(
-    // { where: { userID: req.params.recipeID } }
-  ).then((recipe) => {
-    res.status(200).json(    
-      recipe
-    );
+  Recipe.findAll({
+    where: { shareOption: 1 },
+    include: {
+      model: User,
+      attributes: ["userID", "userName", "name"],
+    },
+  }).then((recipe) => {
+    res.status(200).json(recipe);
   });
 };
 
@@ -64,14 +67,9 @@ exports.findByUserID = (req, res) => {
   }).then((recipe) => { 
     res.status(200).send(recipe)
   });
-
-  //const [results, metadata] = sequelize.query("SELECT * FROM recipe");
-//   res.status(200).json(    
-//     ["recipe"]
-// );
 }; 
 
-exports.findByRecipeProfile = (req, res) => { 
+exports.RecipeInUserProfile = (req, res) => { 
   Recipe.findAll({ 
     where: { userID: req.params.userID ,shareOption: 1} 
   }).then((recipe) => { 

@@ -25,7 +25,7 @@ module.exports = function (app) {
 
   app.put("/api/recipe/editDetail/:recipeID", recipe.editRecipe);
 
-  app.get("/api/find/findByRecipeProfile/:userID", recipe.findByRecipeProfile);
+  app.get("/api/find/RecipeInUserProfile/:userID", recipe.RecipeInUserProfile);
 
   app.get("/api/find/recipeByUserID/:userID", recipe.findByUserID);
 
