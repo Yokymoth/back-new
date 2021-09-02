@@ -50,9 +50,14 @@ db.rating.belongsTo(db.recipe, { foreignKey:"recipeID"});
 db.recipe.belongsToMany(db.emoji, { through: db.comment, foreignKey: 'recipeID' });
 db.emoji.belongsToMany(db.recipe, { through: db.comment, foreignKey: 'emojiID' });
 
-//recipe_foodtag m-m
-db.recipe.belongsToMany(db.foodtag, { through: db.recipe_foodtag, foreignKey: 'recipeID' });
-db.foodtag.belongsToMany(db.recipe, { through: db.recipe_foodtag, foreignKey: 'tagID' });
+// //recipe_foodtag m-m
+// db.recipe.belongsToMany(db.foodtag, { through: db.recipe_foodtag, foreignKey: 'recipeID' });
+// db.foodtag.belongsToMany(db.recipe, { through: db.recipe_foodtag, foreignKey: 'tagID' });
+
+//recipe_selectfoodtag o-m
+db.recipe.hasMany(db.recipe_foodtag, { foreignKey:"recipeID"});
+db.recipe_foodtag.belongsTo(db.recipe,{ foreignKey:"recipeID"});
+
 
 //recipes_ingredient m-m
 //db.recipe.belongsToMany(db.all_ingredients, { through: db.recipes_ingredient, foreignKey: 'recipeID'});

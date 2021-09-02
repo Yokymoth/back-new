@@ -19,21 +19,22 @@ exports.findAllCookingProcess = (req, res) => {
     });
   }; 
 
-exports.createProcess = (req, res) => {
-  for (i = 0; i < req.body.length; i++) {
-    console.log(req.body[i]);
-    cooking_process
-      .create({
-        processDescription: req.body[i].processDescription,
-        processImage: req.body[i].processImage,
-      })
-      .then(() => {})
-      .catch((err) => {
-        res.status(500).send({ message: err.message });
-      });
-  }
-  res.send({ message: "Process created successfully!" });
-};
+  exports.createProcess = (req, res) => {
+    for (i = 0; i < req.body.length; i++) {
+      console.log(req.body[i]);
+      cooking_process
+        .create({
+          processDescription: req.body[i].processDescription,
+          processImage: req.body[i].processImage,
+          recipeID: req.params[i].recipeID,
+        })
+        .then(() => {})
+        .catch((err) => {
+          res.status(500).send({ message: err.message });
+        });
+    }
+    res.send({ message: "Process created successfully!" });
+  };
 
 exports.editProcess = (req, res) => {
   console.log("****EditProcess");

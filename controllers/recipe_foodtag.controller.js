@@ -5,7 +5,9 @@ exports.selectFoodTag = (req, res) => {
     for (i = 0; i < req.body.length; i++) {
       console.log(req.body[i]);
       Recipetag.create({
-        tagID : req.params[i].tagID,
+        tagID : req.body[i].tagID,
+        tagName : req.body[i].tagName,
+        //recipeID: req.params[i].recipeID,
       })
         .then(() => { 
           

@@ -21,7 +21,7 @@ module.exports = function (app) {
 
   app.delete("/api/detail/delete/:recipeID", recipe.delete); //delete
 
-  app.post("/api/recipe_foodtag/:recipeID",recipeTag.selectFoodTag);
+  app.post("/api/recipe_foodtag/selectTag",recipeTag.selectFoodTag);
 
   app.put("/api/recipe/editDetail/:recipeID", recipe.editRecipe);
 

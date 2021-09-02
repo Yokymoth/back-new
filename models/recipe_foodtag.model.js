@@ -3,9 +3,18 @@ module.exports = (sequelize, Sequelize) => {
       "recipesFoodtag",
       {
        rft_ID: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.UUID,
+          defaultValue: Sequelize.UUIDV4,
           primaryKey: true,
-          allowNull: false,  
+          allowNull: false,
+        },
+        tagID: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        tagName: {
+          type: Sequelize.STRING,
+          allowNull: false,
         },
       },
       {
