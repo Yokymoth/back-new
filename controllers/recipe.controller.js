@@ -14,8 +14,8 @@ exports.createRecipe = (req, res) => {
     serveNumber: req.body.serveNumber,
     userID :req.params.userID,
   })
-    .then(() => { 
-      res.send({ message: "Recipe created successfully!" });
+    .then((recipe) => { 
+      res.status(200).send({ recipeID: recipe.recipeID });
     })
     .catch((err) => {
       res.status(500).send({ message: err.message });
