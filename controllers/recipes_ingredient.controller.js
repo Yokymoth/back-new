@@ -42,7 +42,7 @@ exports.createRecipeIngredients = (req, res) => {
       quantityValue: req.body[i].quantityValue,
       ingredientsName: req.body[i].ingredientsName,
       categoryName:req.body[i].categoryName,
-      //recipeID: req.params[i].recipeID,
+      recipeID: req.params[i].recipeID,
     })
       .then(() => {})
       .catch((err) => {
