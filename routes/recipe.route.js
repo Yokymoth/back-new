@@ -30,5 +30,7 @@ module.exports = function (app) {
   app.get("/api/find/recipeByUserID/:userID", recipe.findByUserID);
 
   app.get("/api/find/image/:recipeID", recipe.findImage);
+
+  app.post("/api/recipe_foodtag/selectTag/:recipeID",recipeTag.selectFoodTag);
 };
 //[authJwt.verifyToken]

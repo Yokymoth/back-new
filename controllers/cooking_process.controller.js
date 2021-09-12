@@ -26,7 +26,7 @@ exports.findAllCookingProcess = (req, res) => {
         .create({
           processDescription: req.body[i].processDescription,
           processImage: req.body[i].processImage,
-          recipeID: req.params[i].recipeID,
+          recipeID: req.params.recipeID,
         })
         .then(() => {})
         .catch((err) => {

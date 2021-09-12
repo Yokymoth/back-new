@@ -11,7 +11,7 @@ module.exports = function (app) {
   });
  
   app.get("/api/find/cooking_process/recipeID/:recipeID", cooking_process.findCookingProcessByRecipeID);
-  app.post("/api/cooking_process/createProcess", cooking_process.createProcess);
+  app.post("/api/cooking_process/createProcess/:recipeID", cooking_process.createProcess);
   app.get("/api/find/all/cooking_process", cooking_process.findAllCookingProcess);
   app.put("/api/cookingProcess/editCookingProcess/:processID", cooking_process.editProcess);
   app.delete("/api/cooking_process/delete/:recipeID", cooking_process.delete);

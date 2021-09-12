@@ -86,15 +86,6 @@ exports.findImage = (req, res) => {
   });
 };
 
-exports.findImage = (req, res) => {
-  Recipe.findAll({
-    where: {recipeID: req.params.recipeID},
-    attributes: ['img']
-  }).then((img) => {
-    res.status(200).send(img)
-  });
-};
-
 
 exports.delete = (req, res) => {
   const recipeID = req.params.recipeID;

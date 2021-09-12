@@ -33,7 +33,7 @@ exports.findFlavoring = (req, res) => {
   });
 };
 
-exports.createRecipeIngredients = (req, res) => {
+exports.createRecipeIngredient = (req, res) => {
   console.log("createRecipeIngredients");
   console.log(req.body);
   for (i = 0; i < req.body.length; i++) {
@@ -41,8 +41,8 @@ exports.createRecipeIngredients = (req, res) => {
     RecipeIngre.create({
       quantityValue: req.body[i].quantityValue,
       ingredientsName: req.body[i].ingredientsName,
-      categoryName:req.body[i].categoryName,
-      recipeID: req.params[i].recipeID,
+      categoryID:req.body[i].categoryID,
+      recipeID: req.params.recipeID,
     })
       .then(() => {})
       .catch((err) => {
@@ -53,7 +53,7 @@ exports.createRecipeIngredients = (req, res) => {
   res.send({ message: "Ingredients created successfully!" }); 
 };
 
-exports.editRecipeIngredients = (req, res) => {
+exports.editRecipeIngredient = (req, res) => {
   console.log("****EditRecipeIngredients");
   console.log("****req.body ",req.body);
     RecipeIngre.update({
